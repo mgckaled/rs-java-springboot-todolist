@@ -4,10 +4,51 @@
 
 - [Anotações Importantes](#anotações-importantes)
   - [Sumário](#sumário)
+  - [Dependências / Bibliotecas](#dependências--bibliotecas)
+    - [Project Lombok](#project-lombok)
+    - [O que é H2 Database Engine?](#o-que-é-h2-database-engine)
   - [Conceitos](#conceitos)
     - [O que é Java?](#o-que-é-java)
     - [O que é Maven?](#o-que-é-maven)
     - [O que é SpringBoot?](#o-que-é-springboot)
+
+## Dependências / Bibliotecas
+
+### Project Lombok
+
+O Project Lombok é uma biblioteca Java que visa simplificar o desenvolvimento de código reduzindo a quantidade de código "boilerplate" (código repetitivo e de baixo valor) que os desenvolvedores precisam escrever. Ela fornece anotações que podem ser adicionadas ao código-fonte Java para gerar automaticamente métodos comuns, como getters, setters, construtores, hashCode e equals, entre outros.
+
+A ideia por trás do Project Lombok é melhorar a legibilidade do código, reduzir a probabilidade de erros e aumentar a produtividade dos desenvolvedores, removendo a necessidade de escrever código repetitivo e tedioso. Em vez de escrever manualmente todos os métodos getter e setter para cada campo de classe, por exemplo, você pode simplesmente adicionar uma anotação `@Getter` ou `@Setter` ao campo e o Lombok gerará automaticamente esses métodos durante a compilação.
+
+O Project Lombok também oferece suporte para muitas outras funcionalidades, como criação automática de construtores, métodos `toString()`, métodos `equals()` e `hashCode()`, e muito mais. Isso pode tornar o código Java mais conciso e mais fácil de manter.
+
+É importante notar que, para utilizar o Project Lombok em um projeto, é necessário configurar seu ambiente de desenvolvimento para reconhecer as anotações e processá-las durante a compilação. Geralmente, isso envolve a instalação de um plugin ou uma extensão específica para a sua IDE (Ambiente de Desenvolvimento Integrado) e a inclusão da biblioteca Lombok no seu projeto.
+
+Em resumo, o Project Lombok é uma biblioteca Java que ajuda os desenvolvedores a reduzir a verbosidade do código Java, automatizando a geração de métodos comuns por meio de anotações, tornando o código mais limpo e mais eficiente.
+
+### O que é H2 Database Engine?
+
+O H2 Database Engine é um sistema de gerenciamento de banco de dados relacional (RDBMS) escrito em Java. Ele é um banco de dados de código aberto que é conhecido por ser leve, rápido e de fácil uso. O H2 é frequentemente usado como um banco de dados incorporado em aplicativos Java, o que significa que pode ser incorporado diretamente em um aplicativo sem a necessidade de uma instalação separada de servidor de banco de dados.
+
+Algumas características e pontos importantes sobre o H2 Database Engine incluem:
+
+1. **Velocidade:** O H2 é conhecido por sua rapidez e eficiência, o que o torna uma escolha popular para aplicativos que requerem alto desempenho.
+
+2. **Portabilidade:** Como é escrito em Java, o H2 é portátil e pode ser executado em várias plataformas, incluindo Windows, Linux e macOS.
+
+3. **Modos de operação:** Ele suporta vários modos de operação, incluindo o modo de banco de dados incorporado, modo de servidor TCP/IP e modo de banco de dados de memória.
+
+4. **Compatibilidade SQL:** O H2 oferece suporte a grande parte da linguagem SQL padrão e é compatível com muitos recursos do SQL-92 e SQL-99.
+
+5. **Recursos avançados:** Apesar de ser leve, o H2 oferece suporte a recursos avançados, como índices, chaves estrangeiras, gatilhos, procedimentos armazenados e muito mais.
+
+6. **Confiabilidade:** Embora seja frequentemente usado para desenvolvimento e testes, o H2 também pode ser usado em ambientes de produção, desde que configurado e gerenciado corretamente.
+
+7. **Ferramentas de administração:** O H2 inclui ferramentas de administração web e uma interface de linha de comando para ajudar os administradores a gerenciar bancos de dados H2.
+
+8. **Suporte a transações:** Ele suporta transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade) para garantir a integridade dos dados.
+
+Devido à sua simplicidade e desempenho, o H2 é muitas vezes escolhido por desenvolvedores para desenvolver e testar aplicativos Java, bem como para cenários onde um banco de dados leve e rápido é necessário.
 
 ## Conceitos
 

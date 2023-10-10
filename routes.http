@@ -3,9 +3,9 @@ POST http://localhost:8080/users/
 Content-Type: application/json
 
 {
-  "username": "admim",
+  "username": "mgckaled",
   "name": "Marcel Kaled",
-  "password": "1234"
+  "password": "123456"
 }
 
 ### 
