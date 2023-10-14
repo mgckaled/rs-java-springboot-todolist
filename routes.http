@@ -1,11 +1,24 @@
-### 
+###  create users
 POST http://localhost:8080/users/
 Content-Type: application/json
 
 {
   "username": "mgckaled",
   "name": "Marcel Kaled",
-  "password": "123456"
+  "password": "654321"
+}
+
+### create tasks
+POST http://localhost:8080/tasks/
+Content-Type: application/json
+# Authorization: Basic mgckaled:654321
+
+{
+  "title":"Gravação de aula",
+  "description": "Tarefa para gravar aula de Tasks do Curso de spring boot",
+  "priority": "ALTA",
+  "startAt": "2023-10-06T12:30:00",
+  "endAt": "2023-10-09T12:30:00"
 }
 
 ### 

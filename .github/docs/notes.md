@@ -7,6 +7,7 @@
   - [Dependências / Bibliotecas](#dependências--bibliotecas)
     - [Project Lombok](#project-lombok)
     - [O que é H2 Database Engine?](#o-que-é-h2-database-engine)
+    - [bcrypt](#bcrypt)
   - [Conceitos](#conceitos)
     - [O que é Java?](#o-que-é-java)
     - [O que é Maven?](#o-que-é-maven)
@@ -49,6 +50,24 @@ Algumas características e pontos importantes sobre o H2 Database Engine incluem
 8. **Suporte a transações:** Ele suporta transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade) para garantir a integridade dos dados.
 
 Devido à sua simplicidade e desempenho, o H2 é muitas vezes escolhido por desenvolvedores para desenvolver e testar aplicativos Java, bem como para cenários onde um banco de dados leve e rápido é necessário.
+
+### bcrypt
+
+A biblioteca bcrypt em Java é uma ferramenta valiosa para lidar com o armazenamento seguro de senhas em aplicativos. O bcrypt é um algoritmo de hash de senhas projetado para ser lento e resistente a ataques de força bruta, o que o torna uma escolha sólida para proteger senhas de forma eficaz. Abaixo estão alguns pontos importantes a serem considerados sobre a biblioteca bcrypt em Java:
+
+1. Segurança: O bcrypt é uma escolha sólida para o armazenamento seguro de senhas, porque é deliberadamente lento e utiliza uma "sal" aleatória para cada senha, o que torna muito difícil para um atacante descobrir as senhas originais através de ataques de força bruta ou dicionário.
+
+2. Facilidade de Uso: A biblioteca bcrypt em Java facilita a integração do bcrypt em seus aplicativos. Existem várias bibliotecas de terceiros, como a "jBCrypt", que fornecem uma interface simples e eficaz para trabalhar com bcrypt em Java.
+
+3. Resistência a Ataques: O bcrypt é projetado para ser resistente a ataques de força bruta. Ele é ajustável em termos de custo computacional, o que significa que você pode configurar o nível de dificuldade do algoritmo de acordo com suas necessidades de segurança. Isso pode ser útil para aumentar a segurança ao longo do tempo, conforme as capacidades de computação aumentam.
+
+4. Geração de "Sal": Bcrypt gera automaticamente um valor de "sal" aleatório para cada senha, o que adiciona uma camada adicional de segurança. Isso significa que duas senhas idênticas serão armazenadas de maneira diferente devido aos valores de sal únicos.
+
+5. Comparação de Senhas: Bcrypt em Java também fornece métodos para comparar senhas de forma segura. Isso permite que você verifique as senhas dos usuários durante o processo de autenticação sem expor a senha real.
+
+6. Recomendação: Bcrypt é amplamente recomendado pela comunidade de segurança e é uma escolha confiável para armazenar senhas de maneira segura. É importante não criar seu próprio algoritmo de hash de senhas, pois isso pode levar a vulnerabilidades de segurança.
+
+Em resumo, a biblioteca bcrypt em Java é uma opção robusta e segura para proteger senhas em aplicativos. Certifique-se de integrar corretamente o bcrypt em seu código, escolher um custo computacional apropriado e manter-se atualizado com as melhores práticas de segurança para garantir que as senhas dos usuários sejam tratadas de maneira segura.
 
 ## Conceitos
 
