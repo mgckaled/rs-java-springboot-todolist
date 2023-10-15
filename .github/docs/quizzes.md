@@ -21,3 +21,11 @@
 2. Qual é o objetivo do filtro criado na aula? **Resposta:** Autenticar o usuário antes de permitir o cadastro de uma tarefa.
 3. Qual é a função do método `doFilter` no filtro criado na aula? **Resposta:** Permitir que a requisição continue seu fluxo normal de processamento.
 4. O que é um header HTTP e qual foi a sua importância na aula? **Resposta:** Um header HTTP é uma parte da requisição ou resposta HTTP que contém informações sobre a requisição ou resposta.
+
+### Aula 4
+
+1. Qual é a condição para que toda a operação seja realizada no código discutido na aula? **Resposta:** O servlet path deve ser igual a /tasks.
+2. Qual é a finalidade de utilizar o método `setAttribute` no contexto do filtro e do controlador na aplicação discutida na aula? **Resposta:** Enviar informações do filtro para o controlador.
+3. O que fizemos para garantir que apenas as tarefas relacionadas ao ID de usuário específico sejam retornadas na lista de tarefas? **Resposta:** Utiliza um método `findByIdUser` no repositório de tarefas, passando o ID do usuário como parâmetro.
+4. Como garantimos que a rota de atualização (`PUT`) contém o ID da tarefa que o usuário deseja alterar? **Resposta:** O ID da tarefa é passado como um parâmetro de caminho (*path variable*) na URL.
+5. Qual é o problema que o método `copyNonNullProperties` resolve no contexto da aula? **Resposta:** Permite ao usuário mesclar propriedades não nulas de dois objetos.

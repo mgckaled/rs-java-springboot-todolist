@@ -18,49 +18,51 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FilterTaskAuth extends OncePerRequestFilter {
 
   @Autowired
-    public IUserRepository userRepository;
+  public IUserRepository userRepository;
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
 
-    
-    // Pegar autenticação
-    var authorization = request.getHeader("Authorization");
+    var servletPath = request.getServletPath();
 
-    var authEnconded = authorization.substring("Basic".length()).trim();
+    if (servletPath.equals("/tasks/")) {
 
-    byte[] authDecode = Base64.getDecoder().decode(authEnconded);
+      // Pegar autenticação
+      var authorization = request.getHeader("Authorization");
 
-    var authString = new String(authDecode);
+      var authEnconded = authorization.substring("Basic".length()).trim();
 
-    String[] credentials = authString.split(":");
-    String username = credentials[0];
-    String password = credentials[1];
-    System.out.println(username);
-    System.out.println(password);
-    
-    // validar usuário
-    var user = this.userRepository.findByUsername(username);
-    if (user == null) {
-      response.sendError(401,"Usuário sem autorização");
-    } else {
+      byte[] authDecode = Base64.getDecoder().decode(authEnconded);
 
-      var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
-      if (passwordVerify.verified) {
-        filterChain.doFilter(request, response);
+      var authString = new String(authDecode);
+
+      String[] credentials = authString.split(":");
+      String username = credentials[0];
+      String password = credentials[1];
+      // System.out.println(username);
+      // System.out.println(password);
+
+      // validar usuário
+      var user = this.userRepository.findByUsername(username);
+      if (user == null) {
+        response.sendError(401, "Usuário sem autorização");
       } else {
-        response.sendError(401);
-      };
 
-      
+        var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+        if (passwordVerify.verified) {
+          // Segue viagem
+          request.setAttribute("idUser", user.getId());
+          filterChain.doFilter(request, response);
+        } else {
+          response.sendError(401);
+        }
+
+      }
+
+    } else {
+      filterChain.doFilter(request, response);
     }
-
-    // validar senha
-
-    // segue viagem
-
-    
 
   }
 
