@@ -29,3 +29,10 @@
 3. O que fizemos para garantir que apenas as tarefas relacionadas ao ID de usuário específico sejam retornadas na lista de tarefas? **Resposta:** Utiliza um método `findByIdUser` no repositório de tarefas, passando o ID do usuário como parâmetro.
 4. Como garantimos que a rota de atualização (`PUT`) contém o ID da tarefa que o usuário deseja alterar? **Resposta:** O ID da tarefa é passado como um parâmetro de caminho (*path variable*) na URL.
 5. Qual é o problema que o método `copyNonNullProperties` resolve no contexto da aula? **Resposta:** Permite ao usuário mesclar propriedades não nulas de dois objetos.
+
+## Aula 5
+
+1. Qual é a vantagem de usar a validação do ID do usuário no método de atualização de tarefas? **Resposta:** Previne que usuários alterem tarefas que não pertencem a eles.
+2. O que fizemos para resolver o problema de validação de títulos com mais de 50 caracteres de forma mais amigável para o usuário? **Resposta:** Implementou um tratamento global de exceções usando `@ControllerAdvice` para mensagens de erro específicas.
+3. Como o Spring DevTools melhora a experiência de desenvolvimento? **Resposta:** Ele permite que a aplicação seja reiniciada automaticamente quando são feitas alterações no código-fonte.
+4. Por que criamos um arquivo Dockerfile para utilizar o Render.com? **Resposta:** Para definir as configurações do projeto e criar uma imagem Docker da aplicação.

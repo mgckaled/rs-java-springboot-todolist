@@ -27,20 +27,18 @@ public class TaskController {
 
   @PostMapping("/")
   public ResponseEntity<Object> create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
-    // System.out.println("Chegou no Controller - idUser = " +
-    // request.getAttribute("idUser"));
-
     var idUser = request.getAttribute("idUser");
     taskModel.setIdUser((UUID) idUser);
 
     var currentDate = LocalDateTime.now();
-    if (currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter(taskModel.getEndAt())) {
+    if (currentDate.isAfter(taskModel.getStartAt()) || currentDate.isAfter((taskModel.getEndAt()))) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-          .body("A data de início / data de término deve ser maior do que a data atual");
+          .body("A data de inicio / data de termino deve ser maior do que a data atual.");
     }
 
     if (taskModel.getStartAt().isAfter(taskModel.getEndAt())) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A data de início deve ser anterior a data de término");
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body("A data de início deve ser menor do que a data de término.");
     }
 
     var task = this.taskRepository.save(taskModel);
@@ -49,16 +47,29 @@ public class TaskController {
 
   @GetMapping("/")
   public List<TaskModel> list(HttpServletRequest request) {
-
     var idUser = request.getAttribute("idUser");
     var tasks = this.taskRepository.findByIdUser((UUID) idUser);
     return tasks;
   }
 
   @PutMapping("/{id}")
-    public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
-        var task = this.taskRepository.findById(id).orElse(null);
-        Utils.copyNonNullProperties(taskModel, task);
-        return this.taskRepository.save(task);
+  public ResponseEntity<Object> update(@RequestBody TaskModel taskModel, HttpServletRequest request,
+      @PathVariable UUID id) {
+    var task = this.taskRepository.findById(id).orElse(null);
+    var idUser = request.getAttribute("idUser");
+
+    if (task == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body("Tarefa não encontrada");
     }
+
+    if (!task.getIdUser().equals(idUser)) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body("Usuário não tem permisão para alterar essa tarefa");
+    }
+
+    Utils.copyNonNullProperties(taskModel, task);
+    var taskUpdated = this.taskRepository.save(task);
+    return ResponseEntity.ok().body(taskUpdated);
+  }
 }
